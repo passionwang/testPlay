@@ -1,0 +1,16 @@
+@(title:String , content:String , lines:List[String])
+<!DOCTYPE html>
+<html>
+  <header>
+    <title>@title</title>
+  </header>
+ 
+  <body>
+    <p>@(content) biaobiao</p>
+	<ul>
+		@for(line<-lines){
+			<li>@line</li>
+		}
+	</ul>
+  </body>
+</html>
