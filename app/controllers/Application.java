@@ -4,6 +4,8 @@ import play.*;
 import play.mvc.*;
 import play.data.*;
 
+import util.User;
+
 import views.html.index;
 import java.util.List;
 import java.util.ArrayList;
@@ -21,10 +23,16 @@ public class Application extends Controller {
 		return ok(views.html.form.render());
 	}
 	
+	//public static Result postForm(){
+	//	DynamicForm in = Form.form().bindFromRequest();
+	//	String result = in.get("content");
+	//	return ok(result);
+	//}
+	
 	public static Result postForm(){
-		DynamicForm in = Form.form().bindFromRequest();
-		String result = in.get("content");
-		return ok(result);
+		Form<User> userForm = Form.form(User.class);
+		User user = userForm.bindFromRequest().get();
+		return ok(user.email + " " + user.password);
 	}
 	
     public static Result somePost(){
